@@ -70,7 +70,7 @@ Early-Diabetes-Risk-Prediction/
 │   └── Diabetes_Prediction.ipynb
 │
 ├── models/
-│   └── trained_model.pkl
+│   └── diabetes_model.pkl
 │
 ├── app/
 │   └── app.py
