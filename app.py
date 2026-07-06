@@ -31,10 +31,14 @@ except Exception as e:
 st.title("🩺 Early Diabetes Risk Prediction System")
 
 st.markdown("""
-This application predicts the likelihood of diabetes using patient health information.
+### Software Engineering for Machine Learning  
+### Assignment I  
+**Group 66**
 
-**Model Used:** Logistic Regression
+This application predicts the likelihood of diabetes using patient clinical and demographic information.
 
+**Final Model Selected:** Logistic Regression  
+**Testing Accuracy:** 75.32%  
 **Dataset:** Pima Indians Diabetes Dataset
 """)
 
@@ -45,16 +49,56 @@ This application predicts the likelihood of diabetes using patient health inform
 st.sidebar.header("Project Information")
 
 st.sidebar.info("""
-SEML Assignment 1
+**SEML Assignment I**
 
-Early Diabetes Risk Prediction System
+**Early Diabetes Risk Prediction System**
 
-Technologies:
+**Group 66**
+
+**Group Members**
+- Ajay Nath
+- Nandini Agarwal
+- Devi Kampalli
+- Ashwin Megha
+
+**Technology Stack**
 - Python
+- Pandas
+- NumPy
 - Scikit-Learn
 - Streamlit
-- Logistic Regression
+- Google Colab
 """)
+
+# ----------------------------------
+# Model Summary
+# ----------------------------------
+
+with st.expander("Model Development Summary", expanded=False):
+    st.markdown("""
+    Five machine learning algorithms were evaluated for early diabetes risk prediction:
+
+    - Logistic Regression
+    - Decision Tree
+    - Random Forest
+    - Support Vector Machine (SVM)
+    - K-Nearest Neighbors (KNN)
+
+    Logistic Regression was selected as the final deployment model because it achieved the highest testing accuracy while remaining simple, interpretable, computationally efficient, and suitable for a clinical decision-support application.
+    """)
+
+    comparison_df = pd.DataFrame({
+        "Model": [
+            "Logistic Regression",
+            "Support Vector Machine (SVM)",
+            "Random Forest",
+            "Decision Tree",
+            "K-Nearest Neighbors (KNN)"
+        ],
+        "Accuracy (%)": [75.32, 74.68, 73.38, 72.73, 72.08]
+    })
+
+    st.dataframe(comparison_df, use_container_width=True, hide_index=True)
 
 # ----------------------------------
 # Input Section
@@ -204,7 +248,7 @@ if st.button("Predict Diabetes Risk"):
         ]
     })
 
-    st.dataframe(summary, use_container_width=True)
+    st.dataframe(summary, use_container_width=True, hide_index=True)
 
 # ----------------------------------
 # Footer
