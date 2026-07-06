@@ -18,8 +18,8 @@ st.set_page_config(
 # ----------------------------------
 
 try:
-    model = joblib.load("diabetes_model.pkl")
-    scaler = joblib.load("scaler.pkl")
+    model = joblib.load("/model/diabetes_model.pkl")
+    scaler = joblib.load("/model/scaler.pkl")
 except Exception as e:
     st.error(f"Error loading model files: {e}")
     st.stop()
