@@ -79,7 +79,6 @@ Early-Diabetes-Risk-Prediction/
 │   ├── Business_View.docx
 │   ├── Analytics_Design_View.docx
 │   ├── Data_Preparation_View.docx
-│   └── System_Architecture.docx
 │
 ├── requirements.txt
 ├── README.md
