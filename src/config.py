@@ -3,10 +3,10 @@ from pathlib import Path
 # Project Root
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Data
-DATA_PATH = BASE_DIR / "diabetes.csv"
+# Dataset
+DATA_PATH = BASE_DIR / "data" / "diabetes.csv"
 
-# Model Files
+# Models
 MODEL_DIR = BASE_DIR / "model"
 MODEL_PATH = MODEL_DIR / "diabetes_model.pkl"
 SCALER_PATH = MODEL_DIR / "scaler.pkl"
