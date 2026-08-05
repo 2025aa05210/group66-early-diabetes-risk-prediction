@@ -55,11 +55,10 @@ def predict(request: PredictionRequest):
             probability=probability,
         )
 
-    except Exception as e:
+    except Exception:
+        logger.exception("Prediction failed.")
 
-        logger.error(e)
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(e),
-        )
+    raise HTTPException(
+        status_code=500,
+        detail="Internal server error"
+    )
