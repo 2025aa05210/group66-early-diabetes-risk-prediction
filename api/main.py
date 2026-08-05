@@ -22,7 +22,8 @@ def root():
     logger.info("Root endpoint accessed.")
 
     return {
-        "message": "Early Diabetes Risk Prediction API"
+        "message": "Early Diabetes Risk Prediction API",
+        "status": "running"
     }
 
 
@@ -36,30 +37,22 @@ def health():
     }
 
 
-@app.post(
-    "/predict",
-    response_model=PredictionResponse,
-)
+@app.post("/predict", response_model=PredictionResponse)
 def predict(request: PredictionRequest):
-
     try:
-
         prediction, probability = predict_diabetes(request)
 
-        logger.info(
-            f"Prediction successful: {prediction}"
-        )
+        logger.info(f"Prediction successful: {prediction}")
 
         return PredictionResponse(
             prediction=prediction,
             probability=probability,
         )
 
-    except Exception as e:
-
-        logger.error(e)
+    except Exception:
+        logger.exception("Prediction failed.")
 
         raise HTTPException(
             status_code=500,
-            detail=str(e),
+            detail="Internal server error"
         )
