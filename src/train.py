@@ -1,7 +1,7 @@
 import joblib
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score
 
 from src.config import MODEL_PATH
 from src.utils.logger import logger
@@ -13,26 +13,40 @@ def train_model(
     X_test,
     y_test,
 ):
+    """
+    Train a Logistic Regression model and save it.
 
-    logger.info("Training Logistic Regression model.")
+    Returns:
+        model: Trained model
+        accuracy: Test accuracy
+        f1: Test F1 score
+    """
 
-    model = LogisticRegression(max_iter=1000)
+    try:
+        logger.info("Training Logistic Regression model.")
 
-    model.fit(X_train, y_train)
+        model = LogisticRegression(
+            random_state=42,
+            max_iter=1000
+        )
 
-    predictions = model.predict(X_test)
+        model.fit(X_train, y_train)
 
-    accuracy = accuracy_score(
-        y_test,
-        predictions,
-    )
+        predictions = model.predict(X_test)
 
-    logger.info(
-        f"Training completed. Accuracy={accuracy:.4f}"
-    )
+        accuracy = accuracy_score(y_test, predictions)
+        f1 = f1_score(y_test, predictions)
 
-    joblib.dump(model, MODEL_PATH)
+        logger.info(f"Training completed successfully.")
+        logger.info(f"Accuracy : {accuracy:.4f}")
+        logger.info(f"F1 Score : {f1:.4f}")
 
-    logger.info("Model saved successfully.")
+        joblib.dump(model, MODEL_PATH)
 
-    return model, accuracy
+        logger.info(f"Model saved successfully at {MODEL_PATH}")
+
+        return model, accuracy, f1
+
+    except Exception:
+        logger.exception("Model training failed.")
+        raise
