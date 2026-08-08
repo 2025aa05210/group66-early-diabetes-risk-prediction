@@ -213,6 +213,18 @@ group66-early-diabetes-risk-prediction/
 │       └── exceptions.py
 │
 ├── tests/
+│   ├── test_api.py
+│   ├── test_data_validation.py
+│   ├── test_inference.py
+│   ├── test_integration.py
+│   ├── test_preprocessing.py
+│   └── test_training.py
+│
+├── logs/
+│   └── app.log
+│
+└── reports/
+```
 │
 ├── logs/
 │
