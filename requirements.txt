@@ -3,10 +3,15 @@ pandas
 numpy
 scikit-learn
 joblib
+
 fastapi
 uvicorn
-pytest
 pydantic
+
+pytest
+httpx
+pytest-cov
+
 black
 flake8
 isort
