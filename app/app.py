@@ -31,15 +31,23 @@ except Exception as e:
 st.title("🩺 Early Diabetes Risk Prediction System")
 
 st.markdown("""
-### Software Engineering for Machine Learning  
-### Assignment I  
+### Software Engineering for Machine Learning (SEML)
+### Assignment II
 **Group 66**
 
 This application predicts the likelihood of diabetes using patient clinical and demographic information.
 
-**Final Model Selected:** Logistic Regression  
-**Testing Accuracy:** 75.32%  
+**Final Model Selected:** Logistic Regression
+
 **Dataset:** Pima Indians Diabetes Dataset
+
+### Assignment II Enhancements
+- Modular Machine Learning Pipeline
+- FastAPI REST API
+- Centralized Logging
+- Exception Handling
+- Automated Testing
+- Production-Ready Architecture
 """)
 
 # ----------------------------------
@@ -49,25 +57,27 @@ This application predicts the likelihood of diabetes using patient clinical and 
 st.sidebar.header("Project Information")
 
 st.sidebar.info("""
-**SEML Assignment I**
+**SEML Assignment II**
 
 **Early Diabetes Risk Prediction System**
 
 **Group 66**
 
-**Group Members**
+### Group Members
 - Ajay Nath
 - Nandini Agarwal
 - Devi Kampalli
 - Ashwin Megha
 
-**Technology Stack**
+### Technology Stack
 - Python
 - Pandas
 - NumPy
 - Scikit-Learn
 - Streamlit
-- Google Colab
+- FastAPI
+- Pydantic
+- Pytest
 """)
 
 # ----------------------------------
@@ -75,17 +85,18 @@ st.sidebar.info("""
 # ----------------------------------
 
 with st.expander("Model Development Summary", expanded=False):
+
     st.markdown("""
-    Five machine learning algorithms were evaluated for early diabetes risk prediction:
+Five machine learning algorithms were evaluated for early diabetes risk prediction:
 
-    - Logistic Regression
-    - Decision Tree
-    - Random Forest
-    - Support Vector Machine (SVM)
-    - K-Nearest Neighbors (KNN)
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
 
-    Logistic Regression was selected as the final deployment model because it achieved the highest testing accuracy while remaining simple, interpretable, computationally efficient, and suitable for a clinical decision-support application.
-    """)
+Logistic Regression was selected as the final deployment model because it provides a good balance between predictive performance, interpretability, and computational efficiency. As part of Assignment II, the trained model has been integrated into a production-ready application with modular architecture, centralized logging, REST API support, and automated testing.
+""")
 
     comparison_df = pd.DataFrame({
         "Model": [
@@ -95,10 +106,20 @@ with st.expander("Model Development Summary", expanded=False):
             "Decision Tree",
             "K-Nearest Neighbors (KNN)"
         ],
-        "Accuracy (%)": [75.32, 74.68, 73.38, 72.73, 72.08]
+        "Accuracy (%)": [
+            75.32,
+            74.68,
+            73.38,
+            72.73,
+            72.08
+        ]
     })
 
-    st.dataframe(comparison_df, use_container_width=True, hide_index=True)
+    st.dataframe(
+        comparison_df,
+        use_container_width=True,
+        hide_index=True
+    )
 
 # ----------------------------------
 # Input Section
@@ -169,7 +190,7 @@ with col2:
     )
 
 # ----------------------------------
-# Prediction Button
+# Prediction
 # ----------------------------------
 
 if st.button("Predict Diabetes Risk"):
@@ -221,8 +242,6 @@ if st.button("Predict Diabetes Risk"):
             "The patient appears to have a lower risk of diabetes."
         )
 
-    # Display Input Summary
-
     st.subheader("Input Summary")
 
     summary = pd.DataFrame({
@@ -248,7 +267,11 @@ if st.button("Predict Diabetes Risk"):
         ]
     })
 
-    st.dataframe(summary, use_container_width=True, hide_index=True)
+    st.dataframe(
+        summary,
+        use_container_width=True,
+        hide_index=True
+    )
 
 # ----------------------------------
 # Footer
@@ -257,5 +280,9 @@ if st.button("Predict Diabetes Risk"):
 st.markdown("---")
 
 st.caption(
-    "This system is intended as a decision-support tool only and should not replace professional medical judgement."
+    """
+Software Engineering for Machine Learning (SEML) – Assignment II | Group 66
+
+This system is intended as a clinical decision-support tool only and should not replace professional medical judgement.
+"""
 )
