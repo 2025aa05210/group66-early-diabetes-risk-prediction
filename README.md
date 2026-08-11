@@ -168,19 +168,13 @@ http://localhost:8000/docs
 
 # Project Structure
 
+## Project Structure
+
 ```text
 group66-early-diabetes-risk-prediction/
 │
-├── app.py
-├── Diabetes_Prediction.ipynb
-├── requirements.txt
-│
-├── data/
-│   └── diabetes.csv
-│
-├── model/
-│   ├── diabetes_model.pkl
-│   └── scaler.pkl
+├── app/
+│   └── app.py
 │
 ├── api/
 │   ├── __init__.py
@@ -188,27 +182,35 @@ group66-early-diabetes-risk-prediction/
 │   ├── schemas.py
 │   └── service.py
 │
+├── data/
+│   └── diabetes.csv
+│
+├── logs/
+│   ├── app.log
+│   └── test_logger.py
+│
+├── model/
+│   ├── diabetes_model.pkl
+│   └── scaler.pkl
+│
+├── notebooks/
+│   └── Diabetes_Prediction.ipynb
+│
+├── reports/
+│
 ├── src/
-│   ├── __init__.py
 │   ├── config.py
-│   │
 │   ├── data/
-│   │   ├── __init__.py
 │   │   ├── loader.py
 │   │   └── validator.py
-│   │
 │   ├── features/
-│   │   ├── __init__.py
 │   │   └── preprocessing.py
-│   │
 │   ├── models/
-│   │   ├── __init__.py
 │   │   ├── train.py
+│   │   ├── retrain_model.py
 │   │   ├── predict.py
 │   │   └── evaluate.py
-│   │
 │   └── utils/
-│       ├── __init__.py
 │       ├── logger.py
 │       └── exceptions.py
 │
@@ -220,15 +222,10 @@ group66-early-diabetes-risk-prediction/
 │   ├── test_preprocessing.py
 │   └── test_training.py
 │
-├── logs/
-│   └── app.log
-│
-└── reports/
-```
-│
-├── logs/
-│
-└── reports/
+├── test_pipeline.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -325,7 +322,7 @@ pip install -r requirements.txt
 ## 2. Run Streamlit Application
 
 ```bash
-streamlit run app.py
+streamlit run app/app.py
 ```
 
 ---
