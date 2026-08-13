@@ -14,7 +14,7 @@ The **Early Diabetes Risk Prediction System** is a Machine Learning-based health
 
 The solution uses the **Pima Indians Diabetes Dataset** and evaluates multiple machine learning algorithms before selecting **Logistic Regression** as the final deployment model.
 
-Assignment 2 extends the Assignment 1 implementation by transforming the research prototype into a **production-ready machine learning application** using modular architecture, centralized logging, REST APIs, automated testing, and software engineering best practices.
+Assignment 2 extends the Assignment 1 implementation by transforming the research prototype into a **production-style machine learning application** using modular architecture, centralized logging, REST APIs, automated testing, and software engineering best practices.
 
 ---
 
@@ -71,7 +71,7 @@ This project develops a Machine Learning-based Early Diabetes Risk Prediction Sy
 
 # Assignment 2 Enhancements
 
-The Assignment 1 project has been refactored into a production-ready machine learning system by applying software engineering best practices.
+The Assignment 1 project has been refactored into a production-style machine learning system by applying software engineering best practices.
 
 ## Production Code Refactoring
 
@@ -79,7 +79,7 @@ The Assignment 1 project has been refactored into a production-ready machine lea
 - Separation of concerns
 - Configuration management
 - Reusable ML components
-- Production-ready package structure
+- Production-style package structure
 
 ## Logging
 
@@ -126,7 +126,7 @@ Examples include:
 
 # REST API
 
-A production-ready REST API has been implemented using **FastAPI**.
+A REST API has been implemented using **FastAPI**.
 
 ### Available Endpoints
 
@@ -177,7 +177,6 @@ group66-early-diabetes-risk-prediction/
 │   └── app.py
 │
 ├── api/
-│   ├── __init__.py
 │   ├── main.py
 │   ├── schemas.py
 │   └── service.py
@@ -193,20 +192,26 @@ group66-early-diabetes-risk-prediction/
 │   ├── diabetes_model.pkl
 │   └── scaler.pkl
 │
-├── notebooks/
+├── notebook/
 │   └── Diabetes_Prediction.ipynb
 │
 ├── reports/
+│   ├── data_quality_validation.md
+│   ├── research_vs_production.md
+│   ├── architecture_and_traceability.md
+│   ├── security_and_production_testing.md
+│   ├── final_qa_summary.md
+│   └── final execution and quality reports
 │
 ├── src/
 │   ├── config.py
+│   ├── train.py
 │   ├── data/
 │   │   ├── loader.py
 │   │   └── validator.py
 │   ├── features/
 │   │   └── preprocessing.py
 │   ├── models/
-│   │   ├── train.py
 │   │   ├── retrain_model.py
 │   │   ├── predict.py
 │   │   └── evaluate.py
@@ -352,8 +357,10 @@ python test_pipeline.py
 ## 5. Run Automated Tests
 
 ```bash
-pytest
+pytest -v --cov=src --cov=api --cov-report=term-missing
 ```
+
+Final consolidated result: **27 tests passed with 100% measured coverage**.
 
 ---
 
@@ -362,19 +369,19 @@ pytest
 Format code:
 
 ```bash
-black .
+black src api tests
 ```
 
 Check linting:
 
 ```bash
-flake8
+flake8 --max-line-length=88 src api tests
 ```
 
 Sort imports:
 
 ```bash
-isort .
+isort src api tests
 ```
 
 ---
@@ -396,10 +403,10 @@ isort .
 
 | Member | Contribution |
 |---------|--------------|
-| **Ashwin** | Domain Formulation, Requirements Engineering, System Architecture |
-| **Devi** | Business View, Analytics Design View, Data Preparation View, Testing Support |
-| **Nandini** | Architecture Patterns, Feature Engineering, Quality Assurance Support |
-| **Ajay Nath** | Machine Learning Model Development, Production Code Refactoring, FastAPI Development, Logging, Exception Handling, Model Evaluation, GitHub Repository Administration, Streamlit Deployment, System Integration |
+| **Ashwin** | Data validation and quality metrics, logging/error verification, research-versus-production comparison, final architecture, traceability, integrated QA, report and submission |
+| **Devi** | FastAPI schemas and endpoints, strict request/response validation, safe API errors, API evidence, security considerations and shadow deployment |
+| **Nandini** | Pytest suite for API, data validation, preprocessing, training, inference and integration; initial coverage and QA support |
+| **Ajay Nath** | Production-style refactoring, configuration, model training/inference/evaluation, logging, Streamlit, artefact regeneration, GitHub integration and README |
 
 ---
 
@@ -407,4 +414,4 @@ isort .
 
 This project was developed as part of the **Software Engineering for Machine Learning (SEML)** course at **BITS Pilani (WILP)**.
 
-Assignment 1 focused on the development of the machine learning solution, while Assignment 2 extended the project into a **production-ready, maintainable, testable, and deployable machine learning system** by incorporating software engineering best practices such as modular architecture, centralized logging, REST APIs, automated testing, and quality assurance.
+Assignment 1 focused on development of the machine learning solution, while Assignment 2 extended the project into a **modular, maintainable and testable production-style ML system** through centralized logging, REST APIs, automated testing and quality assurance.

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class PredictionRequest(BaseModel):
@@ -11,9 +11,7 @@ class PredictionRequest(BaseModel):
     insulin: float = Field(alias="Insulin", ge=0, le=1000)
     bmi: float = Field(alias="BMI", gt=0, le=80)
     diabetes_pedigree_function: float = Field(
-        alias="DiabetesPedigreeFunction",
-        ge=0,
-        le=5
+        alias="DiabetesPedigreeFunction", ge=0, le=5
     )
     age: int = Field(alias="Age", ge=1, le=120)
 

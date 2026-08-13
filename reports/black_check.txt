@@ -1,0 +1,5 @@
+Black formatting verification
+Generated: 14 August 2026
+Command: black --check src api tests
+
+Result: PASSED - 19 files would be left unchanged.

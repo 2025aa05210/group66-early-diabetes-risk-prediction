@@ -1,7 +1,8 @@
-import numpy as np
-import pandas as pd
 from unittest.mock import patch
 
+import numpy as np
+import pandas as pd
+import pytest
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
@@ -19,7 +20,16 @@ def create_sample_dataset():
             "SkinThickness": [20, 21, 22, 23, 24, 25, 26, 27],
             "Insulin": [80, 82, 84, 90, 100, 110, 95, 105],
             "BMI": [22.5, 24.1, 26.5, 28.3, 31.4, 34.8, 29.5, 27.8],
-            "DiabetesPedigreeFunction": [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.45, 0.55],
+            "DiabetesPedigreeFunction": [
+                0.2,
+                0.3,
+                0.4,
+                0.5,
+                0.6,
+                0.7,
+                0.45,
+                0.55,
+            ],
             "Age": [25, 30, 35, 40, 45, 50, 38, 42],
             "Outcome": [0, 0, 0, 1, 1, 1, 0, 1],
         }
@@ -44,7 +54,7 @@ def test_train_model_success(mock_dump):
 
     X_train, X_test, y_train, y_test = create_sample_dataset()
 
-    model, accuracy = train_model(
+    model, accuracy, f1 = train_model(
         X_train,
         y_train,
         X_test,
@@ -57,6 +67,8 @@ def test_train_model_success(mock_dump):
 
     assert isinstance(accuracy, float)
     assert 0.0 <= accuracy <= 1.0
+    assert isinstance(f1, float)
+    assert 0.0 <= f1 <= 1.0
 
     mock_dump.assert_called_once()
 
@@ -69,7 +81,7 @@ def test_model_returns_predictions(mock_dump):
 
     X_train, X_test, y_train, y_test = create_sample_dataset()
 
-    model, _ = train_model(
+    model, _, _ = train_model(
         X_train,
         y_train,
         X_test,
@@ -90,7 +102,7 @@ def test_prediction_probabilities(mock_dump):
 
     X_train, X_test, y_train, y_test = create_sample_dataset()
 
-    model, _ = train_model(
+    model, _, _ = train_model(
         X_train,
         y_train,
         X_test,
@@ -113,7 +125,7 @@ def test_accuracy_range(mock_dump):
 
     X_train, X_test, y_train, y_test = create_sample_dataset()
 
-    _, accuracy = train_model(
+    _, accuracy, f1 = train_model(
         X_train,
         y_train,
         X_test,
@@ -121,3 +133,22 @@ def test_accuracy_range(mock_dump):
     )
 
     assert 0 <= accuracy <= 1
+    assert 0 <= f1 <= 1
+
+
+@patch("joblib.dump")
+def test_training_failure_is_propagated(mock_dump):
+    """Verify invalid training data raises an error without saving a model."""
+
+    X_train, X_test, y_train, y_test = create_sample_dataset()
+    invalid_y_train = pd.Series([0] * len(y_train), index=y_train.index)
+
+    with pytest.raises(ValueError):
+        train_model(
+            X_train,
+            invalid_y_train,
+            X_test,
+            y_test,
+        )
+
+    mock_dump.assert_not_called()

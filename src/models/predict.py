@@ -1,11 +1,8 @@
 import joblib
 
 from src.config import MODEL_PATH
+from src.utils.exceptions import ModelLoadError, PredictionError
 from src.utils.logger import logger
-from src.utils.exceptions import (
-    ModelLoadError,
-    PredictionError,
-)
 
 
 class DiabetesPredictor:
@@ -32,9 +29,7 @@ class DiabetesPredictor:
 
             probability = self.model.predict_proba(data)[0][1]
 
-            logger.info(
-                f"Prediction completed. Probability={probability:.4f}"
-            )
+            logger.info(f"Prediction completed. Probability={probability:.4f}")
 
             return prediction, probability
 

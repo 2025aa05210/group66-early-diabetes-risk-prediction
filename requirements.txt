@@ -1,17 +1,17 @@
-streamlit
-pandas
-numpy
-scikit-learn
-joblib
+streamlit==1.61.1
+pandas==3.0.5
+numpy==2.5.2
+scikit-learn==1.9.0
+joblib==1.5.3
 
-fastapi
-uvicorn
-pydantic
+fastapi==0.141.1
+uvicorn==0.52.3
+pydantic==2.13.4
 
-pytest
-httpx
-pytest-cov
+pytest==9.1.1
+httpx==0.28.1
+pytest-cov==7.1.0
 
-black
-flake8
-isort
+black==26.5.1
+flake8==7.3.0
+isort==8.0.1

@@ -1,0 +1,16 @@
+Flake8 before formatting and final corrections
+Generated: 14 August 2026
+Command: flake8 --max-line-length=88 src api tests
+
+api/main.py:58:10: W292 no newline at end of file
+api/schemas.py:23:47: W292 no newline at end of file
+api/service.py:13:5: E122 continuation line missing indentation or outdented
+api/service.py:23:1: E122 continuation line missing indentation or outdented
+api/service.py:28:47: W292 no newline at end of file
+src/models/retrain_model.py:90:11: W292 no newline at end of file
+src/train.py:40:21: F541 f-string is missing placeholders
+tests/test_api.py:111:53: W292 no newline at end of file
+tests/test_inference.py:166:32: W292 no newline at end of file
+tests/test_integration.py:1:1: F401 'unittest.mock.MagicMock' imported but unused
+tests/test_integration.py:48:33: W292 no newline at end of file
+tests/test_training.py:123:30: W292 no newline at end of file

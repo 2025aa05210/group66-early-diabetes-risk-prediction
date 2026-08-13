@@ -20,6 +20,18 @@ def valid_request():
     }
 
 
+def test_root_endpoint():
+    """Verify the API information endpoint returns HTTP 200."""
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "message": "Early Diabetes Risk Prediction API",
+        "status": "running",
+    }
+
+
 def test_health_endpoint():
     """
     Verify /health returns HTTP 200.
@@ -28,9 +40,7 @@ def test_health_endpoint():
     response = client.get("/health")
 
     assert response.status_code == 200
-    assert response.json() == {
-        "status": "healthy"
-    }
+    assert response.json() == {"status": "healthy"}
 
 
 @patch("api.main.predict_diabetes")
@@ -95,9 +105,7 @@ def test_predict_internal_server_error(mock_predict):
     without exposing stack traces.
     """
 
-    mock_predict.side_effect = Exception(
-        "Unexpected failure"
-    )
+    mock_predict.side_effect = Exception("Unexpected failure")
 
     response = client.post(
         "/predict",

@@ -1,0 +1,5 @@
+Flake8 after isort, Black, and final corrections
+Generated: 14 August 2026
+Command: flake8 --max-line-length=88 src api tests
+
+Result: PASSED - no lint violations found.
