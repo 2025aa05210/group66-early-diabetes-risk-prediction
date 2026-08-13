@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 from api.schemas import PredictionRequest
 from api.service import predict_diabetes
@@ -13,9 +13,7 @@ def test_prediction_pipeline(mock_preprocessor, mock_predictor):
     """
 
     # Mock preprocessing
-    mock_preprocessor.transform.return_value = [
-        [0.25] * 8
-    ]
+    mock_preprocessor.transform.return_value = [[0.25] * 8]
 
     # Mock model prediction
     mock_predictor.predict.return_value = (

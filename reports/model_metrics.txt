@@ -1,0 +1,12 @@
+==================================================
+Model Evaluation
+==================================================
+Accuracy : 0.7143
+Precision: 0.6087
+Recall   : 0.5185
+F1 Score : 0.5600
+==================================================
+
+Model regenerated successfully.
+Scaler regenerated successfully.
+Saved to: /workspace/scratch/9d52b3983158/seml_final_work_LI927L/repo/model

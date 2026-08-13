@@ -1,0 +1,12 @@
+2026-08-13 21:45:54,271 | INFO | loader.py | Loading dataset from /workspace/scratch/9d52b3983158/seml_final_work_LI927L/repo/data/diabetes.csv
+2026-08-13 21:45:54,275 | INFO | loader.py | Dataset loaded successfully. Shape: (768, 9)
+2026-08-13 21:45:54,275 | INFO | validator.py | Starting dataset validation.
+2026-08-13 21:45:54,276 | WARNING | validator.py | Dataset contains 652 medically invalid zero values (16.98% of checked diagnostic values).
+2026-08-13 21:45:54,276 | INFO | validator.py | Dataset validation completed successfully. Schema validity=100.00%, missing-value rate=0.00%, invalid-zero rate=16.98%.
+2026-08-13 21:45:54,277 | INFO | preprocessing.py | Loading scaler.
+2026-08-13 21:45:54,882 | INFO | preprocessing.py | Scaling input data.
+2026-08-13 21:45:54,889 | INFO | predict.py | Loading prediction model.
+2026-08-13 21:45:54,920 | INFO | predict.py | Model loaded successfully.
+2026-08-13 21:45:54,923 | INFO | predict.py | Prediction completed. Probability=0.7314
+Prediction: 1
+Probability: 0.7314

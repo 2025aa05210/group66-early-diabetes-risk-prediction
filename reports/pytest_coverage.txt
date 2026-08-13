@@ -1,0 +1,55 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.1.1, pluggy-1.6.0 -- /workspace/scratch/9d52b3983158/seml_final_work_LI927L/repo/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/scratch/9d52b3983158/seml_final_work_LI927L/repo
+configfile: pytest.ini
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.14.2
+collecting ... collected 27 items
+
+tests/test_api.py::test_root_endpoint PASSED                             [  3%]
+tests/test_api.py::test_health_endpoint PASSED                           [  7%]
+tests/test_api.py::test_predict_valid_request PASSED                     [ 11%]
+tests/test_api.py::test_predict_missing_field PASSED                     [ 14%]
+tests/test_api.py::test_predict_invalid_type PASSED                      [ 18%]
+tests/test_api.py::test_predict_internal_server_error PASSED             [ 22%]
+tests/test_data_validation.py::test_valid_dataset_returns_quality_metrics PASSED [ 25%]
+tests/test_data_validation.py::test_empty_dataset_raises_exception PASSED [ 29%]
+tests/test_data_validation.py::test_missing_required_column_raises_exception PASSED [ 33%]
+tests/test_data_validation.py::test_non_numeric_column_raises_exception PASSED [ 37%]
+tests/test_data_validation.py::test_missing_value_metrics_are_calculated PASSED [ 40%]
+tests/test_data_validation.py::test_invalid_zero_metrics_are_calculated PASSED [ 44%]
+tests/test_inference.py::test_model_load_success PASSED                  [ 48%]
+tests/test_inference.py::test_model_load_failure PASSED                  [ 51%]
+tests/test_inference.py::test_prediction_output PASSED                   [ 55%]
+tests/test_inference.py::test_prediction_return_types PASSED             [ 59%]
+tests/test_inference.py::test_prediction_failure PASSED                  [ 62%]
+tests/test_inference.py::test_probability_between_zero_and_one PASSED    [ 66%]
+tests/test_inference.py::test_higher_glucose_increases_probability PASSED [ 70%]
+tests/test_integration.py::test_prediction_pipeline PASSED               [ 74%]
+tests/test_preprocessing.py::test_data_preprocessor_loads_scaler PASSED  [ 77%]
+tests/test_preprocessing.py::test_data_preprocessor_transform_calls_scaler_transform PASSED [ 81%]
+tests/test_training.py::test_train_model_success PASSED                  [ 85%]
+tests/test_training.py::test_model_returns_predictions PASSED            [ 88%]
+tests/test_training.py::test_prediction_probabilities PASSED             [ 92%]
+tests/test_training.py::test_accuracy_range PASSED                       [ 96%]
+tests/test_training.py::test_training_failure_is_propagated PASSED       [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.13-final-0 _______________
+
+Name                            Stmts   Miss  Cover   Missing
+-------------------------------------------------------------
+api/main.py                        22      0   100%
+api/schemas.py                     14      0   100%
+api/service.py                     10      0   100%
+src/config.py                       9      0   100%
+src/data/validator.py              34      0   100%
+src/features/preprocessing.py      10      0   100%
+src/models/predict.py              22      0   100%
+src/train.py                       22      0   100%
+src/utils/exceptions.py             8      0   100%
+src/utils/logger.py                13      0   100%
+-------------------------------------------------------------
+TOTAL                             164      0   100%
+======================== 27 passed, 8 warnings in 2.78s ========================

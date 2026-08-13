@@ -1,0 +1,48 @@
+group66-early-diabetes-risk-prediction/
+├── api/
+│   ├── main.py
+│   ├── schemas.py
+│   └── service.py
+├── app/
+│   └── app.py
+├── data/
+│   └── diabetes.csv
+├── model/
+│   ├── diabetes_model.pkl
+│   └── scaler.pkl
+├── notebook/
+│   └── Diabetes_Prediction.ipynb
+├── reports/
+│   ├── data_quality_validation.md
+│   ├── research_vs_production.md
+│   ├── architecture_and_traceability.md
+│   ├── security_and_production_testing.md
+│   └── final QA and execution reports
+├── src/
+│   ├── config.py
+│   ├── train.py
+│   ├── data/
+│   │   ├── loader.py
+│   │   └── validator.py
+│   ├── features/
+│   │   └── preprocessing.py
+│   ├── models/
+│   │   ├── evaluate.py
+│   │   ├── predict.py
+│   │   └── retrain_model.py
+│   └── utils/
+│       ├── exceptions.py
+│       └── logger.py
+├── tests/
+│   ├── test_api.py
+│   ├── test_data_validation.py
+│   ├── test_inference.py
+│   ├── test_integration.py
+│   ├── test_preprocessing.py
+│   └── test_training.py
+├── Group66.ipynb
+├── README.md
+├── pyproject.toml
+├── pytest.ini
+├── requirements.txt
+└── test_pipeline.py

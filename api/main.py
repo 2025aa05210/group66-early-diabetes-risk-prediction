@@ -1,12 +1,7 @@
 from fastapi import FastAPI, HTTPException
 
-from api.schemas import (
-    PredictionRequest,
-    PredictionResponse,
-)
-
+from api.schemas import PredictionRequest, PredictionResponse
 from api.service import predict_diabetes
-
 from src.utils.logger import logger
 
 app = FastAPI(
@@ -21,10 +16,7 @@ def root():
 
     logger.info("Root endpoint accessed.")
 
-    return {
-        "message": "Early Diabetes Risk Prediction API",
-        "status": "running"
-    }
+    return {"message": "Early Diabetes Risk Prediction API", "status": "running"}
 
 
 @app.get("/health")
@@ -32,9 +24,7 @@ def health():
 
     logger.info("Health endpoint accessed.")
 
-    return {
-        "status": "healthy"
-    }
+    return {"status": "healthy"}
 
 
 @app.post("/predict", response_model=PredictionResponse)
@@ -52,7 +42,4 @@ def predict(request: PredictionRequest):
     except Exception:
         logger.exception("Prediction failed.")
 
-        raise HTTPException(
-            status_code=500,
-            detail="Internal server error"
-        )
+        raise HTTPException(status_code=500, detail="Internal server error")

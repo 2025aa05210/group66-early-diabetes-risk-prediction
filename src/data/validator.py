@@ -1,4 +1,3 @@
-
 """Dataset validation and data-quality measurement.
 
 This module validates the structure of the Pima Indians Diabetes
@@ -10,7 +9,6 @@ import pandas as pd
 
 from src.utils.exceptions import DataValidationError
 from src.utils.logger import logger
-
 
 REQUIRED_COLUMNS = [
     "Pregnancies",
@@ -67,26 +65,20 @@ def validate_dataset(df: pd.DataFrame) -> dict:
         logger.error("Dataset validation failed: dataset is empty.")
         raise DataValidationError("Dataset is empty.")
 
-    present_columns = [
-        column for column in REQUIRED_COLUMNS if column in df.columns
-    ]
+    present_columns = [column for column in REQUIRED_COLUMNS if column in df.columns]
 
     missing_columns = [
         column for column in REQUIRED_COLUMNS if column not in df.columns
     ]
 
-    schema_validity_percent = (
-        len(present_columns) / len(REQUIRED_COLUMNS)
-    ) * 100
+    schema_validity_percent = (len(present_columns) / len(REQUIRED_COLUMNS)) * 100
 
     if missing_columns:
         logger.error(
             "Dataset validation failed. Missing columns: %s",
             missing_columns,
         )
-        raise DataValidationError(
-            f"Missing required columns: {missing_columns}"
-        )
+        raise DataValidationError(f"Missing required columns: {missing_columns}")
 
     non_numeric_columns = [
         column
@@ -107,14 +99,11 @@ def validate_dataset(df: pd.DataFrame) -> dict:
     missing_value_count = int(df.isnull().sum().sum())
 
     missing_value_rate_percent = (
-        missing_value_count / total_cells * 100
-        if total_cells
-        else 0.0
+        missing_value_count / total_cells * 100 if total_cells else 0.0
     )
 
     invalid_zero_by_column = {
-        column: int((df[column] == 0).sum())
-        for column in INVALID_ZERO_COLUMNS
+        column: int((df[column] == 0).sum()) for column in INVALID_ZERO_COLUMNS
     }
 
     invalid_zero_count = sum(invalid_zero_by_column.values())
@@ -122,9 +111,7 @@ def validate_dataset(df: pd.DataFrame) -> dict:
     zero_check_cells = len(df) * len(INVALID_ZERO_COLUMNS)
 
     invalid_zero_rate_percent = (
-        invalid_zero_count / zero_check_cells * 100
-        if zero_check_cells
-        else 0.0
+        invalid_zero_count / zero_check_cells * 100 if zero_check_cells else 0.0
     )
 
     if missing_value_count > 0:
