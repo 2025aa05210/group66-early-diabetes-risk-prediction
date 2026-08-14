@@ -84,7 +84,7 @@ st.sidebar.info("""
 # Model Summary
 # ----------------------------------
 
-with st.expander("Model Development Summary", expanded=False):
+with st.expander("Assignment I Research Model Comparison", expanded=False):
 
     st.markdown("""
 Five machine learning algorithms were evaluated for early diabetes risk prediction:
@@ -97,7 +97,11 @@ Five machine learning algorithms were evaluated for early diabetes risk predicti
 
 Logistic Regression was selected as the final deployment model because it provides a good balance between predictive performance, interpretability, and computational efficiency. As part of Assignment II, the trained model has been integrated into a production-ready application with modular architecture, centralized logging, REST API support, and automated testing.
 """)
-
+    st.info(
+        "The comparison below records the Assignment I research results. "
+        "The final Assignment II retrained model achieved Accuracy 71.43%, "
+        "Precision 60.87%, Recall 51.85%, and F1 Score 56.00%."
+    )
     comparison_df = pd.DataFrame({
         "Model": [
             "Logistic Regression",
