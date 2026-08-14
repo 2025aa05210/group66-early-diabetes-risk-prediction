@@ -237,14 +237,19 @@ group66-early-diabetes-risk-prediction/
 
 # Data Preparation
 
-The dataset preparation includes:
+The Assignment II data workflow includes:
 
-- Data quality assessment
-- Missing value handling
-- Median imputation
-- Dataset validation
-- Feature scaling
-- Train-test split (`random_state=42`)
+- Dataset and schema validation
+- Numeric-type validation
+- Missing-value measurement
+- Medically invalid-zero measurement
+- Feature scaling using StandardScaler
+- Stratified train-test split using `random_state=42`
+
+The Assignment I research notebook retains the original exploratory
+preprocessing and median-imputation work. In Assignment II, invalid
+diagnostic zeros are measured and reported by the validator so that the
+treatment policy remains explicit.
 
 ---
 
