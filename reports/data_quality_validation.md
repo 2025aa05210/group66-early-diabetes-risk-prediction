@@ -121,10 +121,10 @@ scenarios:
 The end-to-end regression check continued to return:
 
 - Predicted class: 1
-- Predicted probability: 0.7881
+- Predicted probability: 0.7314
 
-This confirms that the data-validation enhancement did not break the
-existing prediction pipeline.
+This final regression check confirms that the enhanced data validation
+remains compatible with the consolidated prediction pipeline.
 
 ## 7. Interpretation
 
